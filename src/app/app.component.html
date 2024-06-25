@@ -1,0 +1,35 @@
+<h1 class="bg-secondary text-white" style="text-align: center;">Pick the Winners</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-6 col-md-6">
+      <h3>Please enter the number of winners:</h3>
+    </div>
+    <div class="col-6 col-md-3">
+      <input type="number" [(ngModel)]="numberValue">
+    </div>
+    <div class="col-6 col-md-3">
+      <button class="btn btn-secondary" (click)="onSubmit()">Submit</button>
+    </div>
+  </div>
+</div>
+<h3 class="bg-success text-white">Winners List</h3>
+<table class="table table-responsive table-success">
+  <thead>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Mobile</th>
+      <th>Address</th>
+
+  </thead>
+  <tbody>
+      <tr *ngFor="let winner of winners">
+          <td>{{winner.firstName}}</td>
+          <td>{{winner.lastName}}</td>
+          <td>{{winner.email}}</td>
+          <td>{{winner.mobile}}</td>
+          <td>{{winner.address1}} {{winner.address2}} {{winner.postcode}}</td>
+      </tr>
+  </tbody>
+</table>
