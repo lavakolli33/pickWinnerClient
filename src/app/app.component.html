@@ -1,35 +1,29 @@
-<h1 class="bg-secondary text-white" style="text-align: center;">Pick the Winners</h1>
+<h1 class="bg-secondary text-white" style="text-align: center;">Lottery number generator</h1>
 
 <div class="container">
-  <div class="row">
+  <div class="row">   
     <div class="col-6 col-md-6">
-      <h3>Please enter the number of winners:</h3>
-    </div>
-    <div class="col-6 col-md-3">
-      <input type="number" [(ngModel)]="numberValue">
-    </div>
-    <div class="col-6 col-md-3">
-      <button class="btn btn-secondary" (click)="onSubmit()">Submit</button>
+      <button class="btn btn-secondary" (click)="onSubmit()">Generate Lottery numbers</button>
     </div>
   </div>
 </div>
-<h3 class="bg-success text-white">Winners List</h3>
-<table class="table table-responsive table-success">
-  <thead>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-      <th>Mobile</th>
-      <th>Address</th>
+<div *ngIf="winners.length>0">
+  <div class="container">
+    <div class="row">
+    <div class="col-6 col-md-6">
+      <h3 class="bg-success text-white">Lottery List</h3>
+      <div *ngFor="let winner of winners">
+          <div [ngClass]="{'grey-color': winner<=9 && winner>=1, 'blue-color': winner<=19 && winner>=10, 'pink-color': winner<=29 && winner>=20, 'green-color': winner<=39 && winner>=30, 'yellow-color': winner<=49 && winner>=40 }">{{winner}}</div>        
+      </div>
+    </div>
+    </div>
+  </div>
 
-  </thead>
-  <tbody>
-      <tr *ngFor="let winner of winners">
-          <td>{{winner.firstName}}</td>
-          <td>{{winner.lastName}}</td>
-          <td>{{winner.email}}</td>
-          <td>{{winner.mobile}}</td>
-          <td>{{winner.address1}} {{winner.address2}} {{winner.postcode}}</td>
-      </tr>
-  </tbody>
-</table>
+<div class="container">
+<div class="row">
+<div class="col-6 col-md-6">
+  <button class="btn btn-secondary" (click)="onBonusSubmit()">Get Bonus ball</button>
+</div>
+</div>
+<div *ngIf="bonusBall!=0" class="col-6 col-md-6" [ngClass]="{'grey-color': bonusBall<=9 && bonusBall>=1, 'blue-color': bonusBall<=19 && bonusBall>=10, 'pink-color': bonusBall<=29 && bonusBall>=20, 'green-color': bonusBall<=39 && bonusBall>=30, 'yellow-color': bonusBall<=49 && bonusBall>=40 }">{{bonusBall}}</div>        
+</div>
